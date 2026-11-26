@@ -1,0 +1,653 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #252525;
+    background-color: #ffffff;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button {
+    font: inherit;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 12px;
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn-white {
+    background: white;
+    color: #222;
+}
+
+.btn-yellow {
+    background: #f5b400;
+    color: white;
+}
+
+.hero {
+    min-height: 620px;
+    color: white;
+
+    background-image:
+        linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.70),
+            rgba(0, 0, 0, 0.12)
+        ),
+        url("assets/image1.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.navbar {
+    min-height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #f5b400;
+}
+
+.mobile-menu {
+    display: none;
+}
+
+.hero-text {
+    max-width: 550px;
+    padding-top: 145px;
+    padding-bottom: 170px;
+}
+
+.hero-text h1 {
+    font-size: 48px;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.pets {
+    margin-top: -120px;
+    position: relative;
+    z-index: 2;
+}
+
+.pet-carousel {
+    width: 100%;
+}
+
+.carousel-frame {
+    position: relative;
+}
+
+.carousel-viewport {
+    width: 100%;
+    overflow: hidden;
+    touch-action: pan-y;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    will-change: transform;
+}
+
+.carousel-page {
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 0;
+
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.pet-card {
+    height: 250px;
+    overflow: hidden;
+    border: 2px solid white;
+}
+
+.pet-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-arrow {
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+
+    background: #ffffff;
+    color: #252525;
+    font-size: 22px;
+
+    cursor: pointer;
+    box-shadow: 0 2px 12px #0004;
+}
+
+.carousel-arrow:hover {
+    background: #f5b400;
+    color: white;
+}
+
+.carousel-arrow.previous {
+    left: 8px;
+}
+
+.carousel-arrow.next {
+    right: 8px;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 32px;
+}
+
+.carousel-dots button {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+
+    border: none;
+    background: #d5d5d5;
+    cursor: pointer;
+}
+
+.carousel-dots button.active {
+    background: #f5b400;
+}
+
+.carousel-arrow:focus-visible,
+.carousel-dots button:focus-visible {
+    outline: 3px solid #252525;
+    outline-offset: 3px;
+}
+
+.choose {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding: 35px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    background: #f8f7fc;
+}
+
+.choose h2 {
+    font-size: 23px;
+}
+
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 45px;
+}
+
+.about-image {
+    height: 420px;
+    overflow: hidden;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-text h2 {
+    font-size: 34px;
+    margin-bottom: 15px;
+}
+
+.about-text h3 {
+    font-size: 16px;
+    margin-bottom: 18px;
+    color: #555;
+}
+
+.about-text p {
+    font-size: 14px;
+    color: #888;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.about-text .btn {
+    margin-top: 10px;
+}
+
+.video-section {
+    padding: 120px 0;
+    text-align: center;
+}
+
+.video-container {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    background: #111;
+}
+
+.video-container video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    background: #111;
+}
+
+.video-section h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.video-section p {
+    color: #999;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.process {
+    padding: 100px 0;
+    background: #f8f7fc;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 65px;
+}
+
+.section-title h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.section-title p {
+    font-size: 14px;
+    color: #999;
+}
+
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 30px;
+}
+
+.process-card {
+    padding: 10px;
+}
+
+.step-icon {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #888;
+}
+
+.process-card h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.process-card p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #999;
+}
+
+.reviews {
+    padding: 110px 0;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.review-card {
+    padding: 35px 25px;
+    text-align: center;
+    background: #f8f7fc;
+}
+
+.review-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    margin: 0 auto 25px;
+    border: 4px solid #f5b400;
+    background: white;
+}
+
+.review-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.review-card p {
+    color: #888;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.review-card h3 {
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.review-card span {
+    font-size: 12px;
+    color: #aaa;
+}
+
+.volunteer {
+    padding: 100px 0;
+    color: white;
+    text-align: center;
+
+    background-image:
+        linear-gradient(
+            rgba(245, 180, 0, 0.85),
+            rgba(245, 180, 0, 0.85)
+        ),
+        url("assets/image6.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.volunteer h2 {
+    font-size: 34px;
+    margin-bottom: 20px;
+}
+
+.volunteer p {
+    max-width: 650px;
+    margin: 0 auto 30px;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.volunteer-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+@media (max-width: 900px) {
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 10px;
+    }
+
+    .hero-text h1 {
+        font-size: 40px;
+    }
+
+    .about {
+        gap: 25px;
+    }
+
+    .about-text h2 {
+        font-size: 28px;
+    }
+
+    .carousel-page {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pet-card {
+        height: 210px;
+    }
+
+    .process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .reviews-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 92%;
+    }
+
+    .hero {
+        min-height: 540px;
+        background-position: 55% center;
+    }
+
+    .navbar {
+        min-height: 75px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .mobile-menu {
+        display: block;
+        position: relative;
+    }
+
+    .mobile-menu summary {
+        cursor: pointer;
+        padding: 10px;
+        border: 1px solid white;
+        list-style: none;
+        font-size: 12px;
+    }
+
+    .mobile-links {
+        position: absolute;
+        top: 42px;
+        right: 0;
+
+        width: 180px;
+        padding: 10px;
+        background: #292929;
+        z-index: 10;
+    }
+
+    .mobile-links a {
+        display: block;
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .hero-text {
+        padding-top: 120px;
+        padding-bottom: 110px;
+    }
+
+    .hero-text h1 {
+        font-size: 32px;
+    }
+
+    .hero-text p {
+        font-size: 13px;
+    }
+
+    .pets {
+        margin-top: -60px;
+    }
+
+    .pet-card {
+        height: 155px;
+    }
+
+    .carousel-arrow {
+        width: 34px;
+        height: 34px;
+        font-size: 17px;
+    }
+
+    .choose {
+        flex-direction: column;
+        text-align: center;
+        margin-top: 70px;
+        margin-bottom: 70px;
+    }
+
+    .choose h2 {
+        font-size: 21px;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+    }
+
+    .about-image {
+        height: 300px;
+    }
+
+    .about-text h2 {
+        font-size: 28px;
+    }
+
+    .video-section {
+        padding: 80px 0;
+    }
+
+    .process {
+        padding: 75px 0;
+    }
+
+    .section-title h2 {
+        font-size: 25px;
+    }
+
+    .process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 25px;
+    }
+
+    .process-card h3 {
+        font-size: 14px;
+    }
+
+    .process-card p {
+        font-size: 12px;
+    }
+
+    .reviews {
+        padding: 80px 0;
+    }
+
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .review-avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .volunteer {
+        padding: 75px 0;
+    }
+
+    .volunteer h2 {
+        font-size: 27px;
+    }
+
+    .volunteer-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .carousel-track {
+        transition: none;
+    }
+}

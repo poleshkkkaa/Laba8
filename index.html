@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Полєшко Поліна Вікторівна">
+    <meta name="description" content="PetShelter - Animal Adoption Website">
+    <title>Полєшко Поліна Вікторівна | ІК-42 | ЛР №8 | Варіант 13</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header class="hero" id="home">
+        <div class="container">
+            <nav class="navbar" aria-label="Main navigation">
+                <a href="#home" class="logo">PetShelter.</a>
+
+                <div class="nav-links">
+                    <a href="#home">HOME</a>
+                    <a href="#about">ABOUT</a>
+                    <a href="#pets">PETS</a>
+                    <a href="#process">ADOPTION</a>
+                    <a href="#reviews">REVIEWS</a>
+                    <a href="#volunteer">CONTACT</a>
+                </div>
+
+                <details class="mobile-menu">
+                    <summary>☰ MENU</summary>
+                    <nav class="mobile-links">
+                        <a href="#home">HOME</a>
+                        <a href="#about">ABOUT</a>
+                        <a href="#pets">PETS</a>
+                        <a href="#process">ADOPTION</a>
+                        <a href="#reviews">REVIEWS</a>
+                        <a href="#volunteer">CONTACT</a>
+                    </nav>
+                </details>
+            </nav>
+
+            <div class="hero-text">
+                <h1>ADOPT US.<br>WE NEED YOUR HELP.</h1>
+
+                <p>
+                    Every animal deserves a loving home.
+                    Help us find a family for every pet.
+                </p>
+
+                <a href="#pets" class="btn btn-white">
+                    FIND A PET TO ADOPT
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="pets container" id="pets">
+
+            <div class="pet-carousel" aria-label="Our pets">
+
+                <div class="carousel-frame">
+
+                    <button class="carousel-arrow previous"
+                            type="button"
+                            id="previousPet"
+                            aria-label="Previous pets">
+                        &#10094;
+                    </button>
+
+                    <div class="carousel-viewport">
+                        <div class="carousel-track" id="petTrack">
+
+                            <div class="carousel-page">
+                                <div class="pet-card">
+                                    <img src="assets/image2.jpg" alt="Pet 2">
+                                </div>
+                                <div class="pet-card">
+                                    <img src="assets/image3.jpg" alt="Pet 3">
+                                </div>
+                                <div class="pet-card">
+                                    <img src="assets/image4.jpg" alt="Pet 4">
+                                </div>
+                                <div class="pet-card">
+                                    <img src="assets/image5.jpg" alt="Pet 5">
+                                </div>
+                            </div>
+
+                            <div class="carousel-page">
+                                <div class="pet-card">
+                                    <img src="assets/image7.jpg" alt="Pet 7">
+                                </div>
+                                <div class="pet-card">
+                                    <img src="assets/image8.jpg" alt="Pet 8">
+                                </div>
+                                <div class="pet-card">
+                                    <img src="assets/image9.jpg" alt="Pet 9">
+                                </div>
+                                <div class="pet-card">
+                                    <img src="assets/image10.jpg" alt="Pet 10">
+                                </div>
+                            </div>
+
+                            <div class="carousel-page">
+                                <div class="pet-card">
+                                    <img src="assets/image11.jpg" alt="Pet 11">
+                                </div>
+                                <div class="pet-card">
+                                    <img src="assets/image12.jpg" alt="Pet 12">
+                                </div>
+                                <div class="pet-card">
+                                    <img src="assets/image13.jpg" alt="Pet 13">
+                                </div>
+                                <div class="pet-card">
+                                    <img src="assets/image14.jpg" alt="Pet 14">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <button class="carousel-arrow next"
+                            type="button"
+                            id="nextPet"
+                            aria-label="Next pets">
+                        &#10095;
+                    </button>
+
+                </div>
+
+                <div class="carousel-dots" id="petDots"></div>
+
+            </div>
+        </section>
+
+        <section class="choose container">
+            <h2>Please select your favourite pet</h2>
+
+            <a href="#process" class="btn btn-yellow">
+                ADOPTION DETAILS
+            </a>
+        </section>
+
+        <section class="about container" id="about">
+
+            <div class="about-image">
+                <img src="assets/image6.jpg"
+                     alt="Woman with a dog"
+                     loading="lazy">
+            </div>
+
+            <div class="about-text">
+                <h2>Globally Connected by Large Network</h2>
+
+                <h3>
+                    We help animals find their forever home.
+                </h3>
+
+                <p>
+                    PetShelter is a community of people
+                    who care about animals. Our mission
+                    is to provide shelter, love and
+                    protection to homeless pets.
+                </p>
+
+                <p>
+                    We believe that every cat and dog
+                    deserves happiness, kindness
+                    and a loving family.
+                </p>
+
+                <a href="#process" class="btn btn-yellow">
+                    GET DETAILS
+                </a>
+            </div>
+
+        </section>
+
+        <section class="video-section container" id="video">
+
+            <div class="video-container">
+                <video controls preload="metadata" playsinline>
+                    <source src="assets/video.mp4" type="video/mp4">
+                    Your browser does not support HTML5 video.
+                </video>
+            </div>
+
+            <h2>Watch this video how they live here</h2>
+
+            <p>
+                Discover the wonderful life of animals
+                in our shelter and learn how you can help.
+            </p>
+
+        </section>
+
+        <section class="process" id="process">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Process to adopt a pet</h2>
+                    <p>
+                        Follow these simple steps
+                        to welcome a new friend.
+                    </p>
+                </div>
+
+                <div class="process-grid">
+
+                    <article class="process-card">
+                        <div class="step-icon">♡</div>
+                        <h3>Pet Selection</h3>
+                        <p>
+                            Choose a pet that matches
+                            your lifestyle and personality.
+                        </p>
+                    </article>
+
+                    <article class="process-card">
+                        <div class="step-icon">♙</div>
+                        <h3>Meeting Authority</h3>
+                        <p>
+                            Meet our team and learn
+                            more about your new friend.
+                        </p>
+                    </article>
+
+                    <article class="process-card">
+                        <div class="step-icon">▤</div>
+                        <h3>Adoption Form Filling</h3>
+                        <p>
+                            Complete the necessary
+                            adoption documents.
+                        </p>
+                    </article>
+
+                    <article class="process-card">
+                        <div class="step-icon">⌂</div>
+                        <h3>Bring to New Family</h3>
+                        <p>
+                            Welcome your new pet
+                            into a loving home.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="reviews container" id="reviews">
+
+            <div class="section-title">
+                <h2>Testimonials from our guardians</h2>
+                <p>
+                    Read what our happy pet owners
+                    say about us.
+                </p>
+            </div>
+
+            <div class="reviews-grid">
+
+                <article class="review-card">
+                    <div class="review-avatar">
+                        <img src="assets/review1.jpg"
+                             alt="Woman with a dog"
+                             loading="lazy">
+                    </div>
+
+                    <p>
+                        Adopting a pet was the best
+                        decision we have ever made.
+                        Our new friend brings happiness
+                        to our family every day.
+                    </p>
+
+                    <h3>Olivia Williams</h3>
+                    <span>Happy Pet Owner</span>
+                </article>
+
+                <article class="review-card">
+                    <div class="review-avatar">
+                        <img src="assets/review2.png"
+                             alt="Family with a puppy"
+                             loading="lazy">
+                    </div>
+
+                    <p>
+                        The shelter team was amazing.
+                        They helped us find the perfect
+                        companion for our home.
+                    </p>
+
+                    <h3>Emma Anderson</h3>
+                    <span>Happy Pet Owner</span>
+                </article>
+
+                <article class="review-card">
+                    <div class="review-avatar">
+                        <img src="assets/review3.jpg"
+                             alt="Person with a cat"
+                             loading="lazy">
+                    </div>
+
+                    <p>
+                        Thank you for everything
+                        you do for animals.
+                        Every animal deserves
+                        a loving family.
+                    </p>
+
+                    <h3>Sarah Parker</h3>
+                    <span>Happy Pet Owner</span>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="volunteer" id="volunteer">
+            <div class="container">
+
+                <h2>Want to help? Become a Volunteer</h2>
+
+                <p>
+                    Join our team and help homeless
+                    animals find loving families.
+                    Together we can make a difference.
+                </p>
+
+                <div class="volunteer-buttons">
+                    <a href="#about" class="btn btn-white">
+                        VIEW MORE DETAILS
+                    </a>
+
+                    <a href="#pets" class="btn btn-white">
+                        MEET OUR PETS
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
