@@ -1,165 +1,140 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const track = document.getElementById("petTrack");
-    const previous = document.getElementById("previousPet");
-    const next = document.getElementById("nextPet");
-    const dotsContainer = document.getElementById("petDots");
-    const viewport = document.querySelector(".carousel-viewport");
 
-    if (!track || !previous || !next || !dotsContainer || !viewport) {
-        return;
-    }
+const menuButton = document.querySelector('.menu-toggle');
+const menu = document.querySelector('.nav-links');
 
-    const pages = Array.from(track.children);
-    const total = pages.length;
+function closeMenu() {
+    menu.classList.remove('open');
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.setAttribute('aria-label', 'Open menu');
+}
 
-    if (total === 0) {
-        return;
-    }
+menuButton.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('open');
 
-    let currentPage = 0;
-    let isMoving = false;
-    let touchStartX = null;
-
-    const reducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
+    menuButton.setAttribute('aria-expanded', String(isOpen));
+    menuButton.setAttribute(
+        'aria-label',
+        isOpen ? 'Close menu' : 'Open menu'
     );
+});
 
-    const lastClone = pages[total - 1].cloneNode(true);
-    const firstClone = pages[0].cloneNode(true);
+menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+});
 
-    lastClone.setAttribute("aria-hidden", "true");
-    firstClone.setAttribute("aria-hidden", "true");
-
-    track.prepend(lastClone);
-    track.append(firstClone);
-
-    const dots = [];
-
-    function updateDots() {
-        dots.forEach((dot, index) => {
-            const active = index === currentPage;
-
-            dot.classList.toggle("active", active);
-            dot.setAttribute("aria-pressed", String(active));
-        });
+document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && menu.classList.contains('open')) {
+        closeMenu();
+        menuButton.focus();
     }
+});
 
-    function setPosition(position, animated = true) {
-        track.style.transition = animated
-            ? ""
-            : "none";
-
-        track.style.transform =
-            `translateX(-${(position + 1) * 100}%)`;
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 740) {
+        closeMenu();
     }
+});
 
-    function snapToPage(position) {
-        setPosition(position, false);
-        void track.offsetWidth;
-        track.style.transition = "";
-    }
+const demoText =
+    'Proin laoreet elementum ligula, ac tincidunt lorem accumsan nec. ' +
+    'Fusce eget urna ante. Donec massa velit, varius a accumsan ac, ' +
+    'tempor iaculis massa. Sed placerat justo sed libero varius vulputate.';
 
-    function finishMove() {
-        if (currentPage >= total) {
-            currentPage = 0;
-            snapToPage(currentPage);
-        }
+const expertiseText = {
+    ux: [
+        demoText,
+        demoText
+    ],
 
-        if (currentPage < 0) {
-            currentPage = total - 1;
-            snapToPage(currentPage);
-        }
+    ui: [
+        'User interface design focuses on the appearance and behavior ' +
+        'of digital products, including typography, colors and components.',
 
-        isMoving = false;
-        updateDots();
-    }
+        'Good interfaces are consistent and straightforward to use ' +
+        'across different screen sizes.'
+    ],
 
-    function goToPage(position) {
-        if (isMoving) {
-            return;
-        }
+    web: [
+        'Web design combines layout, navigation, typography and imagery ' +
+        'to create clear, attractive websites.',
 
-        if (position === currentPage) {
-            return;
-        }
+        'Responsive web design makes pages comfortable to use on ' +
+        'desktop computers, tablets and mobile phones.'
+    ]
+};
 
-        isMoving = true;
-        currentPage = position;
+const tabs = [...document.querySelectorAll('.expertise-tab')];
 
-        setPosition(currentPage, true);
-        updateDots();
+const expertiseContent = document.querySelector('#expertise-content');
+const expertiseLead = document.querySelector('#expertise-lead');
+const expertiseDetail = document.querySelector('#expertise-detail');
 
-        if (reducedMotion.matches) {
-            finishMove();
-        }
-    }
+function activateTab(tab, focusTab = false) {
+    tabs.forEach(item => {
+        const active = item === tab;
 
-    function changePage(direction) {
-        if (isMoving) {
-            return;
-        }
-
-        isMoving = true;
-        currentPage += direction;
-
-        setPosition(currentPage, true);
-        updateDots();
-
-        if (reducedMotion.matches) {
-            finishMove();
-        }
-    }
-
-    for (let i = 0; i < total; i++) {
-        const dot = document.createElement("button");
-
-        dot.type = "button";
-        dot.setAttribute("aria-label", `Група фотографій ${i + 1}`);
-
-        dot.addEventListener("click", () => {
-            goToPage(i);
-        });
-
-        dotsContainer.appendChild(dot);
-        dots.push(dot);
-    }
-
-    previous.addEventListener("click", () => {
-        changePage(-1);
+        item.classList.toggle('active', active);
+        item.setAttribute('aria-selected', String(active));
+        item.tabIndex = active ? 0 : -1;
     });
 
-    next.addEventListener("click", () => {
-        changePage(1);
+    const [lead, detail] = expertiseText[tab.dataset.expertise];
+
+    expertiseLead.textContent = lead;
+    expertiseDetail.textContent = detail;
+
+    expertiseContent.setAttribute('aria-labelledby', tab.id);
+
+    if (focusTab) {
+        tab.focus();
+    }
+}
+
+tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => {
+        activateTab(tab);
     });
 
-    track.addEventListener("transitionend", (event) => {
+    tab.addEventListener('keydown', event => {
+        const keys = [
+            'ArrowDown',
+            'ArrowUp',
+            'ArrowRight',
+            'ArrowLeft',
+            'Home',
+            'End'
+        ];
+
+        if (!keys.includes(event.key)) {
+            return;
+        }
+
+        event.preventDefault();
+
+        let next = index;
+
         if (
-            event.target === track &&
-            event.propertyName === "transform"
+            event.key === 'ArrowDown' ||
+            event.key === 'ArrowRight'
         ) {
-            finishMove();
+            next = (index + 1) % tabs.length;
         }
+
+        if (
+            event.key === 'ArrowUp' ||
+            event.key === 'ArrowLeft'
+        ) {
+            next = (index - 1 + tabs.length) % tabs.length;
+        }
+
+        if (event.key === 'Home') {
+            next = 0;
+        }
+
+        if (event.key === 'End') {
+            next = tabs.length - 1;
+        }
+
+        activateTab(tabs[next], true);
     });
-
-    viewport.addEventListener("touchstart", (event) => {
-        touchStartX = event.changedTouches[0].clientX;
-    }, { passive: true });
-
-    viewport.addEventListener("touchend", (event) => {
-        if (touchStartX === null) {
-            return;
-        }
-
-        const touchEndX = event.changedTouches[0].clientX;
-        const difference = touchEndX - touchStartX;
-
-        if (Math.abs(difference) > 40) {
-            changePage(difference < 0 ? 1 : -1);
-        }
-
-        touchStartX = null;
-    }, { passive: true });
-
-    snapToPage(0);
-    updateDots();
 });
